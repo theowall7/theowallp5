@@ -1,7 +1,26 @@
-function setup() {
-  createCanvas(400, 400);
+let mySong;
+let canvas;
+
+async function setup() {
+  canvas = createCanvas(400, 400);
+  canvas.parent("sketch-holder");
+   rectMode(CENTER);
+  angleMode(DEGREES);
+  noStroke();
+
+  mySong = await loadSound('./assets/MiiChannel.mp3');
+
 }
 
 function draw() {
-  background(220);
+  background(144, 3, 252);
+}
+
+function mousePressed() {
+  if(mySong.isPlaying()) {
+    mySong.stop();
+  }
+  else {
+    mySong.start();
+  }
 }
